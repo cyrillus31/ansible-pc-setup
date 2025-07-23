@@ -1,0 +1,47 @@
+- name: Initial play
+  hosts: localhost
+  tags: mac
+  tasks:
+    - name: Ping host
+      ansible.builtin.ping:
+
+    - name: Install git
+      ansible.builtin.homebrew:
+        name: git
+        state: present
+
+    - name: Install PostgreSQL 16
+      ansible.builtin.homebrew:
+        name: postgresql@16
+        state: present
+
+    - name: Install Obsidian
+      tags: productivity
+      ansible.builtin.homebrew:
+        name: obsidian
+        state: present
+
+    - name: Install tmux
+      tags: terminal
+      ansible.builtin.homebrew:
+        name: tmux
+        state: present
+
+    - name: Install starship
+      tags: terminal
+      ansible.builtin.homebrew:
+        name: starship
+        state: present
+
+    - name: Tap MongoDB Homebrew repository
+      tags: db
+      ansible.builtin.homebrew_tap:
+        name: mongodb/brew
+        state: present
+    
+    - name: Install MongoDB Community Edition
+      tags: db
+      ansible.builtin.homebrew:
+        name: mongodb-community
+        state: present
+
