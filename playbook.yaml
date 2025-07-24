@@ -44,4 +44,12 @@
       ansible.builtin.homebrew:
         name: mongodb-community
         state: present
+    - name: Install Nerd Fonts
+      tags: fonts
+      ansible.builtin.homebrew:
+        name: 
+          - font-hurmit-nerd-font
+          - font-caskaydia-cove-nerd-font
+          - font-fira-code-nerd-font
+        state: present
 
