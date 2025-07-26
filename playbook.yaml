@@ -1,5 +1,5 @@
 - name: Initial play
-  hosts: localhost
+  hosts: local
   tags: mac
   tasks:
     - name: Ping host
@@ -21,18 +21,6 @@
         name: obsidian
         state: present
 
-    - name: Install tmux
-      tags: terminal
-      ansible.builtin.homebrew:
-        name: tmux
-        state: present
-
-    - name: Install starship
-      tags: terminal
-      ansible.builtin.homebrew:
-        name: starship
-        state: present
-
     - name: Tap MongoDB Homebrew repository
       tags: db
       ansible.builtin.homebrew_tap:
@@ -44,12 +32,6 @@
       ansible.builtin.homebrew:
         name: mongodb-community
         state: present
-    - name: Install Nerd Fonts
-      tags: fonts
-      ansible.builtin.homebrew:
-        name: 
-          - font-hurmit-nerd-font
-          - font-caskaydia-cove-nerd-font
-          - font-fira-code-nerd-font
-        state: present
 
+- import_playbook: terminal_tools_playbook.yaml
+- import_playbook: yandex_playbook.yaml

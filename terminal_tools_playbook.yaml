@@ -1,0 +1,37 @@
+- name: Termianl playbook
+  hosts: local
+  tags: mac
+  tasks:
+
+    - name: Install tmux
+      tags: terminal
+      ansible.builtin.homebrew:
+        name: tmux
+        state: present
+
+    - name: Install starship
+      tags: terminal
+      ansible.builtin.homebrew:
+        name: starship
+        state: present
+
+    - name: Install Nerd Fonts
+      tags: fonts
+      ansible.builtin.homebrew:
+        name: 
+          - font-hurmit-nerd-font
+          - font-caskaydia-cove-nerd-font
+          - font-fira-code-nerd-font
+        state: present
+
+    - name: Install NeoVim dependencies
+      tags: 
+        - neovim
+        - productivity
+        - terminal
+      ansible.builtin.homebrew:
+        name: 
+          - fzf
+          - ripgrep
+          - python
+        state: present

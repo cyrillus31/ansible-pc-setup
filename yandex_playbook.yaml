@@ -1,0 +1,30 @@
+- name: Initial play
+  hosts: local
+  tags: yandex
+  tasks:
+
+    - name: Add to brew yandex repository
+      tags: 
+        - arc
+        - terminal
+      ansible.builtin.homebrew_tap:
+        name: yandex/arc 
+        url: https://arc-vcs.yandex-team.ru/homebrew-tap
+        state: present
+
+    - name: Install Arc
+      tags: 
+        - arc
+        - terminal
+      ansible.builtin.homebrew:
+        name: arc-launcher
+        state: present
+
+    - name: Update Arc
+      tags: 
+        - arc
+        - terminal
+      ansible.builtin.homebrew:
+        name: arc-launcher
+        state: present
+
