@@ -33,5 +33,12 @@
         name: mongodb-community
         state: present
 
+    - name: Install Unnatural Scroll Wheels
+      tags: mac
+      ansible.builtin.homebrew:
+        name: unnaturalscrollwheels
+        state: present
+
 - import_playbook: terminal_tools_playbook.yaml
+- import_playbook: personal_repositories_playbook.yaml
 - import_playbook: yandex_playbook.yaml

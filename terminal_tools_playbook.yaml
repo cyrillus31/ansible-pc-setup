@@ -50,4 +50,3 @@
         name: neovim
         state: present
 
-- import_playbook: personal_repositories_playbook.yaml

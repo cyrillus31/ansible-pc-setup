@@ -1,8 +1,6 @@
 - name: Personal repositories
   hosts: local
   tags: personal
-  vars:
-    github_user: cyrillus31
 
   tasks:
     - name: Clone my dotfiles
@@ -24,21 +22,16 @@
         source backup.sh
         source run.sh
 
-    - name: Clone my NeoVim config
-      tags: 
-        - dotfiles
-      ansible.builtin.git:
-        repo: "git@github.com:{{ github_user }}/nvim-config.git"
-        dest: "~/.config/nvim"
-        update: true
+    - name: Check in ~/.config/nvim already exists
+      stat:
+        path: "~/.config/nvim"
+      register: neovim_configuration
 
     - name: Clone my NeoVim config
       tags: 
         - dotfiles
-        - yandex
       ansible.builtin.git:
         repo: "git@github.com:{{ github_user }}/nvim-config.git"
         dest: "~/.config/nvim"
-        update: true
-        version: "yandex"
+      when: not neovim_configuration.stat.exists
 

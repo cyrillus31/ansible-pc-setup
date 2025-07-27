@@ -28,3 +28,25 @@
         name: arc-launcher
         state: present
 
+    - name: Setup ssh keys access
+      tags: 
+        - arc
+        - terminal
+      shell: |
+        ssh-add
+        # arc token store
+        
+    - name: Check in ~/.config/nvim already exists
+      stat:
+        path: "~/.config/nvim"
+      register: neovim_configuration
+
+    - name: Checkout yandex branch of NeoVim config
+      tags: 
+        - yandex
+      ansible.builtin.git:
+        repo: "git@github.com:{{ github_user }}/nvim-config.git"
+        dest: "~/.config/nvim"
+        version: "yandex"
+      when: neovim_configuration.stat.exists
+      ignore_errors: true

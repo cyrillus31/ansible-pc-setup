@@ -1,0 +1,2 @@
+# variables shared by all hosts and playbooks
+github_user: cyrillus31
