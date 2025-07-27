@@ -34,4 +34,20 @@
           - fzf
           - ripgrep
           - python
+          - go
+          - npm
+          - yarn
+          - unzip
+          - wget
         state: present
+
+    - name: Install NeoVim
+      tags: 
+        - neovim
+        - productivity
+        - terminal
+      ansible.builtin.homebrew:
+        name: neovim
+        state: present
+
+- import_playbook: personal_repositories_playbook.yaml

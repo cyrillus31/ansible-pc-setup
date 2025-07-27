@@ -1,0 +1,44 @@
+- name: Personal repositories
+  hosts: local
+  tags: personal
+  vars:
+    github_user: cyrillus31
+
+  tasks:
+    - name: Clone my dotfiles
+      tags: dotfiles
+      ansible.builtin.git:
+        repo: "git@github.com:{{ github_user }}/dotfiles.git"
+        dest: "~/dotfiles"
+        update: true
+
+    - name: Install stow
+      ansible.builtin.homebrew:
+        name: stow
+        state: present
+
+    - name: Stow my dotfiles
+      shell: |
+        set -e # exit immediately if command exits with non-zero status
+        cd {{ lookup('env', 'HOME') }}/dotfiles
+        source backup.sh
+        source run.sh
+
+    - name: Clone my NeoVim config
+      tags: 
+        - dotfiles
+      ansible.builtin.git:
+        repo: "git@github.com:{{ github_user }}/nvim-config.git"
+        dest: "~/.config/nvim"
+        update: true
+
+    - name: Clone my NeoVim config
+      tags: 
+        - dotfiles
+        - yandex
+      ansible.builtin.git:
+        repo: "git@github.com:{{ github_user }}/nvim-config.git"
+        dest: "~/.config/nvim"
+        update: true
+        version: "yandex"
+
