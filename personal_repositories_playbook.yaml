@@ -35,3 +35,18 @@
         dest: "~/.config/nvim"
       when: not neovim_configuration.stat.exists
 
+    - name: Create Obsidian vault directory
+      tags:
+        - obsidian
+      file:
+        path: "{{ lookup('env', 'HOME') }}/Documents/ObsidianVault"
+        state: directory
+        mode: "0755"
+
+    - name: Clone Obsidian worknotes
+      tags:
+        - obsidian
+        - yandex
+      ansible.builtin.git:
+        repo: git@github.com:{{ github_user }}/Work.Yandex.git
+        dest: "~/Documents/ObsidianVault/WorkYandex"

@@ -50,3 +50,4 @@
         version: "yandex"
       when: neovim_configuration.stat.exists
       ignore_errors: true
+
