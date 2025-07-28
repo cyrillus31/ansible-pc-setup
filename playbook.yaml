@@ -20,6 +20,20 @@
       ansible.builtin.homebrew:
         name: obsidian
         state: present
+      when: ansible_facts["system"] == "Darwin"
+
+    - name: Tap nikitabobko/tap (Aerospace)
+      homebrew_tap:
+        name: nikitabobko/tap
+        state: present
+      when: ansible_facts["system"] == "Darwin"
+
+    - name: Install tiling window manager (Aerospace)
+      tags: productivity
+      ansible.builtin.homebrew:
+        name: nikitabobko/tap/aerospace
+        state: present
+        install_options: cask
 
     - name: Tap MongoDB Homebrew repository
       tags: db

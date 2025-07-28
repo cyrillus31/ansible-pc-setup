@@ -39,6 +39,8 @@
           - yarn
           - unzip
           - wget
+          - htop
+          - fastfetch
         state: present
 
     - name: Install NeoVim
