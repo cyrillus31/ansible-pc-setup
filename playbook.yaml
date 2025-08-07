@@ -44,7 +44,9 @@
     - name: Install MongoDB Community Edition
       tags: db
       ansible.builtin.homebrew:
-        name: mongodb-community
+        name: 
+          - mongodb-community@4.4
+          - mongosh
         state: present
 
     - name: Install Unnatural Scroll Wheels
