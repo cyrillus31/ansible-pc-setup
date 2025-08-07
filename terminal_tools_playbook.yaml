@@ -24,6 +24,12 @@
           - font-fira-code-nerd-font
         state: present
 
+    - name: Install Lua
+      tags: lua
+      ansible.builtin.homebrew:
+        name: lua
+        state: present
+
     - name: Install NeoVim dependencies
       tags: 
         - neovim
