@@ -9,10 +9,12 @@
         name: tmux
         state: present
 
-    - name: Install starship
+    - name: Install starship and zsh-autosuggestions
       tags: terminal
       ansible.builtin.homebrew:
-        name: starship
+        name: 
+        - starship
+        - zsh-autosuggestions
         state: present
 
     - name: Install Nerd Fonts

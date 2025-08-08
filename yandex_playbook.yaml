@@ -28,7 +28,7 @@
         name: arc-launcher
         state: present
 
-    - name: Setup ssh keys access
+    - name: Setup ssh keys access ("ssh-add")
       tags: 
         - arc
         - terminal
