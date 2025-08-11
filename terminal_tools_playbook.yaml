@@ -2,7 +2,6 @@
   hosts: local
   tags: mac
   tasks:
-
     - name: Install tmux
       tags: terminal
       ansible.builtin.homebrew:
@@ -12,15 +11,15 @@
     - name: Install starship and zsh-autosuggestions
       tags: terminal
       ansible.builtin.homebrew:
-        name: 
-        - starship
-        - zsh-autosuggestions
+        name:
+          - starship
+          - zsh-autosuggestions
         state: present
 
     - name: Install Nerd Fonts
       tags: fonts
       ansible.builtin.homebrew:
-        name: 
+        name:
           - font-hurmit-nerd-font
           - font-caskaydia-cove-nerd-font
           - font-fira-code-nerd-font
@@ -33,12 +32,12 @@
         state: present
 
     - name: Install NeoVim dependencies
-      tags: 
+      tags:
         - neovim
         - productivity
         - terminal
       ansible.builtin.homebrew:
-        name: 
+        name:
           - fzf
           - ripgrep
           - python
@@ -51,12 +50,18 @@
           - fastfetch
         state: present
 
+    - name: Install ffmpeg
+      tags:
+        - video_processing
+      ansible.builtin.homebrew:
+        name: ffmpeg
+        state: present
+
     - name: Install NeoVim
-      tags: 
+      tags:
         - neovim
         - productivity
         - terminal
       ansible.builtin.homebrew:
         name: neovim
         state: present
-
