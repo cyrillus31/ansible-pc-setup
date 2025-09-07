@@ -11,12 +11,15 @@
         state: present
 
     - name: Install PostgreSQL 16
+      tags: db
       ansible.builtin.homebrew:
         name: postgresql@16
         state: present
 
     - name: Install Obsidian
-      tags: productivity
+      tags: 
+        - productivity
+        - obsidian
       ansible.builtin.homebrew:
         name: obsidian
         state: present

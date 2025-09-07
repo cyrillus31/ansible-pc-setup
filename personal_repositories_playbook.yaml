@@ -15,12 +15,13 @@
         name: stow
         state: present
 
-    - name: Stow my dotfiles
+    - name: Stow my dotfiles (no_yandex)
       shell: |
-        set -e # exit immediately if command exits with non-zero status
+        # exit immediately if command exits with non-zero status
+        set -e 
         cd {{ lookup('env', 'HOME') }}/dotfiles
-        source backup.sh
-        source run.sh
+        make backup && true
+        make macbook
 
     - name: Check in ~/.config/nvim already exists
       stat:
