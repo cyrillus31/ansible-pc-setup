@@ -58,6 +58,14 @@
         name: unnaturalscrollwheels
         state: present
 
+    - name: Install Flameshot (screenshots) [allow in settings]
+      tags: 
+        - screenshots
+        - productivity
+      ansible.builtin.homebrew:
+        name: flameshot
+        state: present
+
 - import_playbook: terminal_tools_playbook.yaml
 - import_playbook: personal_repositories_playbook.yaml
 - import_playbook: yandex_playbook.yaml
