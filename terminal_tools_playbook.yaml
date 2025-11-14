@@ -2,66 +2,68 @@
   hosts: local
   tags: mac
   tasks:
-    - name: Install tmux
-      tags: terminal
-      ansible.builtin.homebrew:
-        name: tmux
-        state: present
+      - name: Install tmux
+        tags: terminal
+        ansible.builtin.homebrew:
+            name: tmux
+            state: present
 
-    - name: Install starship and zsh-autosuggestions
-      tags: terminal
-      ansible.builtin.homebrew:
-        name:
-          - starship
-          - zsh-autosuggestions
-        state: present
+      - name: Install starship and zsh-autosuggestions
+        tags: terminal
+        ansible.builtin.homebrew:
+            name:
+                - starship
+                - zsh-autosuggestions
+            state: present
 
-    - name: Install Nerd Fonts
-      tags: fonts
-      ansible.builtin.homebrew:
-        name:
-          - font-hurmit-nerd-font
-          - font-caskaydia-cove-nerd-font
-          - font-fira-code-nerd-font
-        state: present
+      - name: Install Nerd Fonts
+        tags: fonts
+        ansible.builtin.homebrew:
+            name:
+                - font-hurmit-nerd-font
+                - font-caskaydia-cove-nerd-font
+                - font-fira-code-nerd-font
+                - font-victor-mono-nerd-font
+                - font-iosevka-nerd-font
+            state: present
 
-    - name: Install Lua
-      tags: lua
-      ansible.builtin.homebrew:
-        name: lua
-        state: present
+      - name: Install Lua
+        tags: lua
+        ansible.builtin.homebrew:
+            name: lua
+            state: present
 
-    - name: Install NeoVim dependencies
-      tags:
-        - neovim
-        - productivity
-        - terminal
-      ansible.builtin.homebrew:
-        name:
-          - fzf
-          - ripgrep
-          - python
-          - go
-          - npm
-          - yarn
-          - unzip
-          - wget
-          - htop
-          - fastfetch
-        state: present
+      - name: Install NeoVim dependencies
+        tags:
+            - neovim
+            - productivity
+            - terminal
+        ansible.builtin.homebrew:
+            name:
+                - fzf
+                - ripgrep
+                - python
+                - go
+                - npm
+                - yarn
+                - unzip
+                - wget
+                - htop
+                - fastfetch
+            state: present
 
-    - name: Install ffmpeg
-      tags:
-        - video_processing
-      ansible.builtin.homebrew:
-        name: ffmpeg
-        state: present
+      - name: Install ffmpeg
+        tags:
+            - video_processing
+        ansible.builtin.homebrew:
+            name: ffmpeg
+            state: present
 
-    - name: Install NeoVim
-      tags:
-        - neovim
-        - productivity
-        - terminal
-      ansible.builtin.homebrew:
-        name: neovim
-        state: present
+      - name: Install NeoVim
+        tags:
+            - neovim
+            - productivity
+            - terminal
+        ansible.builtin.homebrew:
+            name: neovim
+            state: present
