@@ -16,6 +16,18 @@
                 - zsh-autosuggestions
             state: present
 
+      - name: Tap homebrew/cask-fonts
+        ansible.builtin.homebrew_tap:
+            name: homebrew/cask-fonts
+            state: present
+
+      - name: Install Victor Mono font (official)
+        tags: fonts
+        ansible.builtin.homebrew:
+            name: font-victor-mono
+            state: present
+            tap: homebrew/cask-fonts
+
       - name: Install Nerd Fonts
         tags: fonts
         ansible.builtin.homebrew:
